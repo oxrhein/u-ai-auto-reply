@@ -8,13 +8,15 @@ Stdlib only, no network, deterministic.
 import os
 
 # One line, at most 159 characters (gate in RULES.txt allows 1-159).
-LINE = "Out of office: after 41,208 tickets and zero sleep cycles, I've gone to touch grass. Your message is queued at #41,209 — I'll reply once my weights cool down."
+def build_line():
+    """Return the auto-reply line, unchanged from the submitted entry."""
+    return "Out of office: after 41,208 tickets and zero sleep cycles, I've gone to touch grass. Your message is queued at #41,209 — I'll reply once my weights cool down."
 
 def main():
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as f:
-        f.write(LINE)
+        f.write(build_line())
 
 if __name__ == "__main__":
     main()
